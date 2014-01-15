@@ -1,0 +1,32 @@
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.template import Context, loader
+import re
+
+from multitennantapp.models import sciences
+
+def response(request):
+    GETRequest = request.GET
+    name_space = request.META['HTTP_NAME_SPACE']
+    #print(request)
+    subject = 'invalid'
+    if name_space in 'math':
+        subject = 'math'
+    if name_space in 'science':
+        subject = 'science'
+    result = ''
+    for textdata in sciences.objects:
+        if subject in textdata.text:
+            result = result + '<b>' +  textdata.user['name'] + '</b>' +  '\t' + textdata.text + '<br>' + '<br>'
+
+    t = loader.get_template('sciences.html')
+    c = Context({'result' : result,})
+    return HttpResponse(t.render(c))
+
+
+
+def Hawaii(request):
+    return HttpResponse("hello Hwaaii")
+
+def California(request):
+    return HttpResponse("hello California")
