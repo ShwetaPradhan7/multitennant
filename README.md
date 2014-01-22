@@ -16,7 +16,6 @@ Python installed 2.7
 
 ================
 To install tweepy tool (to get your own data from twitter using python tool)
-
 setuptools - from Git repository
 
 > git clone git://github.com/tweepy/tweepy.git
