@@ -32,6 +32,7 @@ python manage.py runserver 127.0.0.1:9001
 ============================================
 To check the response
 ip address:8000/response for science
+
 ipaddress:9000/response for math
 
 
